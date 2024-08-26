@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PotakusAPI.Data;
+using PotakusAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +11,10 @@ builder.Services.AddDbContext<PotakuAppContext>(options =>
         sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()
     ));
 
+// Registrar los repositorios
+builder.Services.AddScoped<IItemRepository, ItemRepository>();
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
 
 app.Run();
