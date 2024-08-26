@@ -17,4 +17,11 @@ public class PotakuAppContext(DbContextOptions<PotakuAppContext> options) : DbCo
     public DbSet<UserLogin> UserLogins { get; set; }
     public DbSet<UserLoginAttempt> UserLoginAttempts { get; set; }
     public DbSet<UserSession> UserSessions { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<UserLogin>()
+            .HasKey(ul => new { ul.LoginProvider, ul.ProviderKey });
+    }
 }
