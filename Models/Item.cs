@@ -11,7 +11,7 @@ public class Item
     public string? Name { get; set; }
     public List<string>? AlternateNames { get; set; }
     public string? Description { get; set; }
-    public string? Category { get; set; }
+    public List<string>? Category { get; set; }
     public string? Cover { get; set; }
     public string? Thumbnail { get; set; }
     public List<string>? Images { get; set; }
