@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PotakusAPI.Repositories;
+using PotakusAPI.Utils;
 
 namespace PotakusAPI.Endpoints;
 
@@ -7,7 +8,7 @@ public static class ThemeEndpoints
 {
     public static void MapThemeEndpoints(this IEndpointRouteBuilder routes)
     {
-        var group = routes.MapGroup("themes");
+        var group = routes.MapGroup(ApiVersion.V1("themes"));
         group.WithTags("Themes");
 
         group.MapGet("/", async (IThemeRepository themeR) =>
